@@ -1,0 +1,23 @@
+body {
+  padding: 0px;
+  margin: 0px;
+  background-color: #EDEDED;
+}
+
+.launcherImage {
+  border: 1px solid black;
+  width: 50px;
+  height: 50px;
+}
+
+.launcherImage:hover {
+  background-color: #0022E6;
+}
+
+.launcherIcon {
+  margin-top: 5px;
+}
+
+.launcherText {
+  
+}

@@ -5,13 +5,53 @@
     <script src="../owf-widget.js"></script>
     <script src="launcher.js"></script>
     <link href="../bootstrap.css" rel="stylesheet"></link>
-
+    <link href="launcher.css" rel="stylesheet"></link>
   </head>
   <body ng-controller="LauncherCtrl">
-
-    <div>
-        <h1>Launcher!!</h1>
-        <button class="btn btn-primary" ng-click="launch('geo')">Geo</button>
+    <h1>Apps</h1>
+    <div class="container-fluid">
+      <div class="row">
+          <div class="col-xs-4 launcherIcon">
+            <img class="launcherImage img-rounded" src="../anthem_logo.png" ng-click="launch('geo')"></img>
+            <span class="launcherText">Geo</span>
+          </div>
+          <div class="col-xs-4 launcherIcon">
+            <img class="launcherImage img-rounded" src="../anthem_logo.png" ng-click="launch('exo')"></img>
+            <span class="launcherText">eXo</span>
+          </div>
+          <div class="col-xs-4 launcherIcon">
+            <img class="launcherImage img-rounded" src="../anthem_logo.png" ng-click="launch('fedsearch')"></img>
+            <span class="launcherText">Fed Search</span>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-xs-4 launcherIcon">
+            <img class="launcherImage img-rounded" src="../anthem_logo.png" ng-click="launch('chat')"></img>
+            <span class="launcherText">Chat</span>
+          </div>
+          <div class="col-xs-4 launcherIcon">
+            <img class="launcherImage img-rounded" src="../anthem_logo.png" ng-click="launch('alert')"></img>
+            <span class="launcherText">Alerts</span>
+          </div>
+          <div class="col-xs-4 launcherIcon">
+            <img class="launcherImage img-rounded" src="../anthem_logo.png" ng-click="launch('activity')"></img>
+            <span class="launcherText">Activity</span>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-xs-4 launcherIcon">
+            <img class="launcherImage img-rounded" src="../anthem_logo.png" ng-click="launch('rfi')"></img>
+            <span class="launcherText">RFI</span>
+          </div>
+          <div class="col-xs-4 launcherIcon">
+            <img class="launcherImage img-rounded" src="../anthem_logo.png"></img>
+            <span class="launcherText">ETC</span>
+          </div>
+          <div class="col-xs-4 launcherIcon">
+            <img class="launcherImage img-rounded" src="../anthem_logo.png"></img>
+            <span class="launcherText">ETC</span>
+          </div>
+      </div>
     </div>
   </body>
 </html>
