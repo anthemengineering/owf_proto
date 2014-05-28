@@ -1,12 +1,30 @@
 <!doctype html>
-<html ng-app>
+<html ng-app="Announcements">
   <head>
     <script src="../angular.min.js"></script>
     <script src="../owf-widget.js"></script>
+    <script src="announcements.js"></script>
+    <link href="../bootstrap.css" rel="stylesheet"></link>
   </head>
-  <body>
+  <body ng-controller="AnnouncementsCtrl">
     <div>
-        <h1>Launcher!!</h1>
+        <h1>Anouncements</h1>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Message</th>
+                    <th>Time</th>
+                </tr>
+            </thead>
+            <tr ng-repeat="announcement in announcements">
+                <td>
+                    {{announcement.msg}}
+                </td>
+                <td>
+                    {{announcement.time | date:'yyyy-MM-dd HH:mm:ss'}}
+                </td>
+            </tr>
+        </table>
     </div>
   </body>
 </html>

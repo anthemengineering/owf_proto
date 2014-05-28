@@ -3,10 +3,31 @@
   <head>
     <script src="../angular.min.js"></script>
     <script src="../owf-widget.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+        var ge;
+        google.load("earth", "1", {"other_params":"sensor=true_or_false"});
+
+        function init() {
+          google.earth.createInstance('map3d', initCB, failureCB);
+        }
+
+        function initCB(instance) {
+          ge = instance;
+          ge.getWindow().setVisibility(true);
+        }
+
+        function failureCB(errorCode) {
+        }
+
+        google.setOnLoadCallback(init);
+  </script>
+    </script>
   </head>
   <body>
     <div>
         <h1>Geo!</h1>
+        <div id="map3d" style="height: 400px; width: 600px;"></div>
     </div>
   </body>
 </html>
