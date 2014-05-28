@@ -1,12 +1,17 @@
 <!doctype html>
-<html ng-app>
+<html ng-app="Launcher">
   <head>
     <script src="../angular.min.js"></script>
     <script src="../owf-widget.js"></script>
+    <script src="launcher.js"></script>
+    <link href="../bootstrap.css" rel="stylesheet"></link>
+
   </head>
-  <body>
+  <body ng-controller="LauncherCtrl">
+
     <div>
         <h1>Launcher!!</h1>
+        <button class="btn btn-primary" ng-click="launch('geo')">Geo</button>
     </div>
   </body>
 </html>
