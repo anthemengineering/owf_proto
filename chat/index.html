@@ -1,12 +1,18 @@
 <!doctype html>
-<html ng-app>
+<html ng-app="Chat">
   <head>
     <script src="../angular.min.js"></script>
     <script src="../owf-widget.js"></script>
+    <script src="chat.js"></script>
+    <link rel="stylesheet" href="../bootstrap.css">
+    <link rel="stylesheet" href="chat.css">
   </head>
-  <body>
-    <div>
-        <h1>Chat!</h1>
-    </div>
+  <body ng-controller="ChatCtrl">
+      <h1>ChatBox</h1>
+        <p ng-repeat="log in chatLog">Suma says: {{ log.msg }}</p>
+      <form name="chatForm" ng-submit="submitChat()">
+        <input name="chat" type='text' ng-model="chat"></input>
+        <input type="submit" value="Submit" class="btn btn-primary btn-xs">
+      </form>
   </body>
 </html>
