@@ -8,11 +8,15 @@
     <link rel="stylesheet" href="chat.css">
   </head>
   <body ng-controller="ChatCtrl" class="container-fluid">
-      <h1>ChatBox</h1>
-        <p ng-repeat="log in chatLog">Suma says: {{ log.msg }}</p>
-      <form name="chatForm" ng-submit="submitChat()">
-        <input name="chat" type='text' ng-model="chat"></input>
+    <br/>
+    <div class="chatLog">
+      <p ng-repeat="log in chatLog">{{log.usr}} says: {{ log.msg }}</p>
+    </div>
+    <form name="chatForm" ng-submit="submitChat('You')">
+      <input name="chat" type='text' ng-model="chat"></input>
+      <p class="fixThisStupidButton">
         <input type="submit" value="Submit" class="btn btn-primary btn-xs">
-      </form>
+      </p>
+    </form>
   </body>
 </html>

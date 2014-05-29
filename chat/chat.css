@@ -1,0 +1,15 @@
+.chatLog {
+  width: 155px;
+  height: 100px;
+  overflow: scroll;
+  border: 1px inset grey;
+}
+
+.fixThisStupidButton {
+  margin-top: 5px;
+}
+
+h2 {
+  margin: 0;
+  padding: 0; 
+}
