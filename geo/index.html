@@ -35,24 +35,24 @@
           marker = new google.maps.Marker({
               position: addrLatLong,
               map: map,
-              title: alert.msg
+              title: alert.msg,
+              alert: alert
           });
           markers.unshift(marker);
           if (markers.length > 10) {
               markers[markers.length -1].setMap(null);
           }
           markers = markers.slice(0, 10);
-          popUpText = '<div class="popup">' +
-              '<h2>Alert</h2>' +
-              '<p> Message: ' + alert.msg+ '</p>' +
-              '</div>';
-          infoWindow = new google.maps.InfoWindow({
-              content: popUpText
-          });
           google.maps.event.addListener(marker, 'click', function () {
               if (openInfoWindow) {
                 openInfoWindow.close();
               }
+              popUpText = '<div class="popup">' +
+                  '<h2>Alert</h2>' +
+                  '<p> Message: ' + this.alert.msg+ '</p>' +
+                  '</div>';
+              infoWindow = new google.maps.InfoWindow({
+                  content: popUpText});
               openInfoWindow = infoWindow;
               infoWindow.open(map, this);
           });

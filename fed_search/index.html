@@ -1,19 +1,19 @@
 <!doctype html>
-<html ng-app>
+<html ng-app="FedSearch">
   <head>
     <script src="../angular.min.js"></script>
     <script src="../owf-widget.js"></script>
+    <script src="fed_search.js"></script>
     <link rel="stylesheet" href="../bootstrap.css">
   </head>
-  <body class="container-fluid">
+  <body ng-controller="FedSearchCtrl" class="container-fluid">
     <div>
         <h2>Federated Search</h2>
-        <form name="search">
           <input name="search" type='text'></input>
-          <p style=" margin-top: 5px">
-          <input type="submit" value="Search" class="btn btn-primary btn-xs">
-        </p>
-      </form>
+          <p style="margin-top: 5px">
+          <button class="btn btn-primary btn-xs" ng-click="search()">Search</button>
+          </p>
+          <img src="apl_search.png" ng-show="showSearch">
     </div>
   </body>
 </html>
