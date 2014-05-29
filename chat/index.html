@@ -17,12 +17,14 @@
       </table>
     </div>
     <div class="chatForm">
+    <form ng-submit="submitChat('You')">
       <div class="input-group">
         <input type="text" ng-model="chat" class="form-control">
         <span class="input-group-btn">
-          <button class="btn btn-primary" ng-click="submitChat('You')" type="button">Send</button>
+          <input value="Send" class="btn btn-primary" type="submit">Send</input>
         </span>
       </div>
+      </form>
     </div>
   </body>
 </html>
