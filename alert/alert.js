@@ -32,6 +32,9 @@ angular.module('Alert').controller('AlertCtrl', function($scope, $timeout) {
     var mytimeout = $timeout($scope.onTimeout, 1000);
     OWF.relayFile = '/owf/js/eventing/rpc_relay.uncompressed.html';
     $scope.onAlertClick = function(alert) {
-        OWF.Eventing.publish('AlertClick', alert);
+        OWF.Launcher.launch({
+            universalName: 'geo.anthemengineering.com'}, function() {
+                OWF.Eventing.publish('AlertClick', alert);
+        });
     }
 });
