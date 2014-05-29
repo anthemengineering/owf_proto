@@ -3,10 +3,17 @@
   <head>
     <script src="../angular.min.js"></script>
     <script src="../owf-widget.js"></script>
+    <link rel="stylesheet" href="../bootstrap.css">
   </head>
-  <body>
+  <body class="container-fluid">
     <div>
-        <h1>Launcher!!</h1>
+        <h2>Federated Search</h2>
+        <form name="search">
+          <input name="search" type='text'></input>
+          <p style=" margin-top: 5px">
+          <input type="submit" value="Search" class="btn btn-primary btn-xs">
+        </p>
+      </form>
     </div>
   </body>
 </html>
