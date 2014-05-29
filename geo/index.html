@@ -9,6 +9,7 @@
     </script>
     <script type="text/javascript">
         var markers = [];
+        var openInfoWindow = null;
         function initialize() {
           var geographicCenter, mapOptions, addrsLength, addrIndex;
           geographicCenter = new google.maps.LatLng(
@@ -49,9 +50,20 @@
               content: popUpText
           });
           google.maps.event.addListener(marker, 'click', function () {
+              if (openInfoWindow) {
+                openInfoWindow.close();
+              }
+              openInfoWindow = infoWindow;
               infoWindow.open(map, this);
           });
       }
+        truncateDecimals = function (number, digits) {
+            var multiplier = Math.pow(10, digits),
+                adjustedNum = number * multiplier,
+                truncatedNum = Math[adjustedNum < 0 ? 'ceil' : 'floor'](adjustedNum);
+
+            return truncatedNum / multiplier;
+        };
 
       function alertClickReceive(sender, alert) {
           var addrLatLong = new google.maps.LatLng(
@@ -59,6 +71,17 @@
               alert.location[1]);
           map.setCenter(addrLatLong);
           map.setZoom(5);
+          for(i = 0; i < markers.length; i++) {
+              markerLatLng = [
+                  truncateDecimals(markers[i].getPosition().k, 2),
+                  truncateDecimals(markers[i].getPosition().A, 2)]
+              alertLatLng = [
+                  truncateDecimals(alert.location[0], 2),
+                  truncateDecimals(alert.location[1], 2)]
+              if (markerLatLng[0] === alertLatLng[0] && markerLatLng[1] === alertLatLng[1]) {
+                  new google.maps.event.trigger( markers[i], 'click' );
+              }
+          }
       }
       OWF.relayFile = '/owf/js/eventing/rpc_relay.uncompressed.html';
       owfdojo.addOnLoad(function() {
