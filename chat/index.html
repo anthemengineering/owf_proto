@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../bootstrap.css">
     <link rel="stylesheet" href="chat.css">
   </head>
-  <body ng-controller="ChatCtrl">
+  <body ng-controller="ChatCtrl" class="container-fluid">
       <h1>ChatBox</h1>
         <p ng-repeat="log in chatLog">Suma says: {{ log.msg }}</p>
       <form name="chatForm" ng-submit="submitChat()">

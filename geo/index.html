@@ -1,33 +1,32 @@
-<!doctype html>
-<html ng-app>
+<!DOCTYPE html>
+<html>
   <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <script src="../angular.min.js"></script>
     <script src="../owf-widget.js"></script>
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <style type="text/css">
+    </style>
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?sensor=false">
+    </script>
     <script type="text/javascript">
-        var ge;
-        google.load("earth", "1", {"other_params":"sensor=true_or_false"});
-
-        function init() {
-          google.earth.createInstance('map3d', initCB, failureCB);
-        }
-
-        function initCB(instance) {
-          ge = instance;
-          ge.getWindow().setVisibility(true);
-        }
-
-        function failureCB(errorCode) {
-        }
-
-        google.setOnLoadCallback(init);
-  </script>
+      function initialize() {
+          var geographicCenter, mapOptions, addrsLength, addrIndex;
+          geographicCenter = new google.maps.LatLng(
+            44.580207622,
+            -103.4617602834
+          );
+          mapOptions = {
+            zoom: 3,
+            center: geographicCenter
+          };
+        var map = new google.maps.Map(document.getElementById("map-canvas"),
+            mapOptions);
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
     </script>
   </head>
   <body>
-    <div>
-        <h1>Geo!</h1>
-        <div id="map3d" style="height: 400px; width: 600px;"></div>
-    </div>
+    <div id="map-canvas"/>
   </body>
 </html>
