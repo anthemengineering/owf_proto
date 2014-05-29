@@ -25,9 +25,13 @@ angular.module('Alert').controller('AlertCtrl', function($scope, $timeout) {
         message = $scope.alertMsgs[truncateDecimals(getRandomArbitrary(0, 4), 0)];
         newAlert = {msg: message, time: Date.now(), location: [lat, lng]};
         $scope.alerts.unshift(newAlert);
+        $scope.alerts = $scope.alerts.slice(0, 10);
         OWF.Eventing.publish('Alert', newAlert);
         mytimeout = $timeout($scope.onTimeout, 10000);
     }
     var mytimeout = $timeout($scope.onTimeout, 1000);
     OWF.relayFile = '/owf/js/eventing/rpc_relay.uncompressed.html';
+    $scope.onAlertClick = function(alert) {
+        OWF.Eventing.publish('AlertClick', alert);
+    }
 });

@@ -17,9 +17,9 @@
                     <th>Location</th>
                 </tr>
             </thead>
-            <tr ng-repeat="alert in alerts">
+            <tr ng-repeat="alert in alerts" ng-click="onAlertClick(alert)">
                 <td>
-                    {{alert.msg}}
+                    <a href="#" ng-click="onAlertClick(alert)">{{alert.msg}}</a>
                 </td>
                 <td>
                     {{alert.time | date:'yyyy-MM-dd HH:mm:ss'}}
