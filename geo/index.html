@@ -4,13 +4,11 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <script src="../angular.min.js"></script>
     <script src="../owf-widget.js"></script>
-    <style type="text/css">
-    </style>
     <script type="text/javascript"
       src="https://maps.googleapis.com/maps/api/js?sensor=false">
     </script>
     <script type="text/javascript">
-      function initialize() {
+        function initialize() {
           var geographicCenter, mapOptions, addrsLength, addrIndex;
           geographicCenter = new google.maps.LatLng(
             44.580207622,
@@ -24,7 +22,8 @@
             mapOptions);
       }
       google.maps.event.addDomListener(window, 'load', initialize);
-    </script>
+  </script>
+    <link href="geo.css" rel="stylesheet"></link>
   </head>
   <body>
     <div id="map-canvas"/>
