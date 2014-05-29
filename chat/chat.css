@@ -1,4 +1,5 @@
 .chatLog {
+  height: 125px;
   overflow: scroll;
   border: 1px inset grey;
   font-size: 85%;
