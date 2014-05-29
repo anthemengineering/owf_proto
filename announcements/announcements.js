@@ -18,7 +18,11 @@ angular.module('Announcements').controller('AnnouncementsCtrl', function($scope,
     };
     $scope.onTimeout = function(){
         message = $scope.announcementMsgs[truncateDecimals(getRandomArbitrary(0, 3), 0)];
-        $scope.announcements.unshift({msg: message, time: Date.now()});
+        newAnnouncement = {msg: message, time: Date.now()};
+        $scope.announcements.unshift(newAnnouncement);
+        $timeout(function() {
+            newAnnouncement.isOld = true;
+        }, 500);
         mytimeout = $timeout($scope.onTimeout, 10000);
     }
     var mytimeout = $timeout($scope.onTimeout, 1000);

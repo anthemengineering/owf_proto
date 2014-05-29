@@ -5,9 +5,10 @@
     <script src="../owf-widget.js"></script>
     <script src="announcements.js"></script>
     <link href="../bootstrap.css" rel="stylesheet"></link>
+    <link href="announcements.css" rel="stylesheet"></link>
   </head>
   <body ng-controller="AnnouncementsCtrl">
-    <div>
+    <div ng-cloak>
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -15,7 +16,7 @@
                     <th>Time</th>
                 </tr>
             </thead>
-            <tr ng-repeat="announcement in announcements">
+            <tr class="announcement-row" ng-class="{announcementOld: announcement.isOld}" ng-repeat="announcement in announcements">
                 <td>
                     {{announcement.msg}}
                 </td>
