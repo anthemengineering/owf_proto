@@ -7,12 +7,16 @@
     <link rel="stylesheet" href="../bootstrap.css">
   </head>
   <body ng-controller="FedSearchCtrl" class="container-fluid">
-    <div>
+    <div ng-cloak>
         <h2>Federated Search</h2>
-          <input name="search" type='text'></input>
-          <p style="margin-top: 5px">
-          <button class="btn btn-primary btn-xs" ng-click="search()">Search</button>
-          </p>
+        <form ng-submit="search()">
+          <div class="input-group" style="max-width: 400px">
+            <input type="text" class="form-control">
+            <span class="input-group-btn">
+              <input value="Search" class="btn btn-primary" type="submit">Search</input>
+            </span>
+           </div>
+        </form>
           <img src="apl_search.png" ng-show="showSearch">
     </div>
   </body>
