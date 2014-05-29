@@ -10,84 +10,11 @@
   </head>
   <body ng-controller="LauncherCtrl">
     <h2>Apps</h2>
-      <div class="row">
-          <div class="col-xs-4">
-            <div class="iconArea">
-              <div class="launcherIcon container-fluid">
-                <i class="launcherImage fa fa-globe fa-4x" ng-click="launch('geo')"></i>
-              </div>
-              <span class="launcherText container-fluid">Geo</span>
-            </div>
-          </div>
-          <div class="col-xs-4">
-            <div class="iconArea">
-              <div class="launcherIcon container-fluid">
-                <i class="launcherImage fa fa-warning fa-4x" ng-click="launch('alert')"></i>
-              </div>
-              <span class="launcherText container-fluid">Alerts</span>
-            </div>
-          </div>
-          <div class="col-xs-4">
-            <div class="iconArea">
-              <div class="launcherIcon container-fluid">
-                <i class="launcherImage fa fa-cloud fa-4x" ng-click="launch('eXo')"></i>
-              </div>
-              <span class="launcherText container-fluid">eXo</span>
-            </div>
-          </div>
-      </div>
-      <div class="row">
-          <div class="col-xs-4">
-            <div class="iconArea">
-              <div class="launcherIcon container-fluid">
-                <i class="launcherImage fa fa-comments-o fa-4x" src="../anthem_logo.png" ng-click="launch('chat')"></i>
-              </div>
-              <span class="launcherText container-fluid">Chat</span>
-            </div>
-          </div>
-          <div class="col-xs-4">
-            <div class="iconArea">
-              <div class="launcherIcon container-fluid">
-                <i class="launcherImage fa fa-comment fa-4x" src="../anthem_logo.png" ng-click="launch('announcements')"></i>
-              </div>
-              <span class="launcherText container-fluid">Announcements</span>
-            </div>
-          </div>
-          <div class="col-xs-4">
-            <div class="iconArea">
-              <div class="launcherIcon container-fluid">
-                <i class="launcherImage fa fa-search fa-4x"></i>
-              </div>
-              <span class="launcherText container-fluid">Fed Search</span>
-            </div>
-          </div>
-      </div>
-      <div class="row">
-          <div class="col-xs-4">
-            <div class="iconArea">
-              <div class="launcherIcon container-fluid">
-                <i class="launcherImage fa fa-history fa-4x" src="../anthem_logo.png" ng-click="launch('activity')"></i>
-              </div>
-              <span class="launcherText container-fluid">Activity</span>
-            </div>
-          </div>
-          <div class="col-xs-4">
-            <div class="iconArea">
-              <div class="launcherIcon container-fluid">
-                <i class="launcherImage fa fa-space-shuttle fa-4x" src="../anthem_logo.png" ng-click="launch('rfi')"></i>
-              </div>
-              <span class="launcherText container-fluid">RFI</span>
-            </div>
-          </div>
-          <div class="col-xs-4">
-            <div class="iconArea">
-              <div class="launcherIcon container-fluid">
-                <i class="launcherImage fa fa-cogs fa-4x" src="../anthem_logo.png"></i>
-              </div>
-              <span class="launcherText container-fluid">ETC</span>
-            </div>
-          </div>
-      </div>
-
+    <div ng-repeat="app in apps" class="iconArea">
+        <div class="launcherIcon">
+          <i class="launcherImage fa {{ app.icon }} fa-4x" ng-click="launch(app.id)"></i>
+        </div>
+        <span class="launcherText">{{ app.name }}</span>
+    </div>
   </body>
 </html>

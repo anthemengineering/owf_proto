@@ -4,8 +4,9 @@ body {
 
 h2 {
   margin: 20px 0 20px 0;
-  padding-left: 35px;
+  padding-left: 30px;
 }
+
 .launcherImage {
   margin-bottom: 3px;
   -webkit-transition-duration: .3s;
@@ -23,21 +24,22 @@ h2 {
 }
 
 .launcherIcon {
-  text-align: justify;
-  width: 50px;
   padding: 0;
   margin-bottom: 5px;
 }
 
 .launcherText {
   text-shadow: 5px 5px 20px black;
-  text-align: center;
   margin: 0 auto;
   display: block;
   padding: 0;
   font-size: 85%;
+
 }
 
 .iconArea {
+  text-align: center;
+  display: inline-block;
+  width: 100px;
   margin-bottom: 15px;
 }
