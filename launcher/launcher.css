@@ -18,7 +18,7 @@ body {
 }
 
 .launcherImage:hover {
-  background-color: #0022E6;
+  background-color: #428bca;
   -webkit-transform: translate(2px, 2px);
   transform: translate(2px, 2px);
 
