@@ -22,7 +22,7 @@ angular.module('Alert').controller('AlertCtrl', function($scope, $timeout) {
         lng = getRandomArbitrary(-127, -80);
         lat = truncateDecimals(lat, 4);
         lng = truncateDecimals(lng, 4);
-        message = $scope.alertMsgs[truncateDecimals(getRandomArbitrary(0, 4), 0)];
+        message = $scope.alertMsgs[truncateDecimals(getRandomArbitrary(0, 5), 0)];
         newAlert = {msg: message, time: Date.now(), location: [lat, lng]};
         $scope.alerts.unshift(newAlert);
         $scope.alerts = $scope.alerts.slice(0, 10);
