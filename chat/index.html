@@ -10,7 +10,11 @@
   <body ng-controller="ChatCtrl" class="container-fluid">
     <br/>
     <div class="chatLog">
-      <p ng-repeat="log in chatLog">{{log.usr}} says: {{ log.msg }}</p>
+      <table class="table table-striped">
+        <tr ng-repeat="log in chatLog">
+          <td>{{log.usr}} says: {{ log.msg }}</td>
+        </tr>
+      </table>
     </div>
     <form name="chatForm" ng-submit="submitChat('You')">
       <input name="chat" type='text' ng-model="chat"></input>

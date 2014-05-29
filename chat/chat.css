@@ -1,8 +1,7 @@
 .chatLog {
-  width: 155px;
-  height: 100px;
   overflow: scroll;
   border: 1px inset grey;
+  font-size: 85%;
 }
 
 .fixThisStupidButton {
