@@ -1,0 +1,10 @@
+.alert-row {
+    -webkit-transition: background-color 2s ease-in;
+    -moz-transition: background-color 2s ease-in;
+    transition: background-color 2s ease-in;
+    background-color: lightblue;
+}
+
+.alertOld {
+    background-color: white;
+}

@@ -5,9 +5,10 @@
     <script src="../owf-widget.js"></script>
     <script src="alert.js"></script>
     <link href="../bootstrap.css" rel="stylesheet"></link>
+    <link href="alert.css" rel="stylesheet"></link>
   </head>
   <body ng-controller="AlertCtrl">
-    <div>
+    <div ng-cloak>
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -16,7 +17,7 @@
                     <th>Location</th>
                 </tr>
             </thead>
-            <tr ng-repeat="alert in alerts" ng-click="onAlertClick(alert)">
+            <tr class="alert-row" ng-class="{alertOld: alert.isOld}" ng-repeat="alert in alerts" ng-click="onAlertClick(alert)">
                 <td>
                     <a href="#" ng-click="onAlertClick(alert)">{{alert.msg}}</a>
                 </td>

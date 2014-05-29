@@ -27,6 +27,9 @@ angular.module('Alert').controller('AlertCtrl', function($scope, $timeout) {
         $scope.alerts.unshift(newAlert);
         $scope.alerts = $scope.alerts.slice(0, 10);
         OWF.Eventing.publish('Alert', newAlert);
+        $timeout(function() {
+            newAlert.isOld = true;
+        }, 500);
         mytimeout = $timeout($scope.onTimeout, 10000);
     }
     var mytimeout = $timeout($scope.onTimeout, 1000);
