@@ -22,8 +22,11 @@
           };
         map = new google.maps.Map(document.getElementById("map-canvas"),
             mapOptions);
+        }
+        google.maps.event.addDomListener(window, 'load', initialize);
+      function buildAlertMessage(alert) {
+          return alert.msg.title + alert.msg.verb + alert.msg.entityName + alert.msg.context + alert.msg.contextName;
       }
-      google.maps.event.addDomListener(window, 'load', initialize);
       function alertReceiveInit() {
           OWF.Eventing.subscribe('Alert', this.alertReceive);
           OWF.Eventing.subscribe('AlertClick', this.alertClickReceive);
@@ -35,7 +38,7 @@
           marker = new google.maps.Marker({
               position: addrLatLong,
               map: map,
-              title: alert.msg,
+              title: buildAlertMessage(alert),
               alert: alert
           });
           markers.unshift(marker);
@@ -49,7 +52,7 @@
               }
               popUpText = '<div class="popup">' +
                   '<h2>Alert</h2>' +
-                  '<p> Message: ' + this.alert.msg+ '</p>' +
+                  '<p> Message: ' + buildAlertMessage(alert) + '</p>' +
                   '</div>';
               infoWindow = new google.maps.InfoWindow({
                   content: popUpText});
