@@ -4,6 +4,7 @@
     <script src="../angular.min.js"></script>
     <script src="../owf-widget.js"></script>
     <script src="alert.js"></script>
+     <script src="../panopticon_api.js"></script>
     <link href="../bootstrap.css" rel="stylesheet"></link>
     <link href="alert.css" rel="stylesheet"></link>
   </head>
@@ -17,15 +18,15 @@
                     <th>Location</th>
                 </tr>
             </thead>
-            <tr class="alert-row" ng-class="{alertOld: alert.isOld}" ng-repeat="alert in alerts" ng-click="onAlertClick(alert)">
+            <tr class="alert-row" ng-class="{alertOld: alert.isOld}" ng-repeat="alert in alerts">
                 <td>
-                    <a href="#" ng-click="onAlertClick(alert)">{{alert.msg}}</a>
+                    <a href="#" ng-click="openCortexWidget({ type: alert.msg.entityType, id: alert.msg.entityID })">{{ alert.msg.title + alert.msg.verb + alert.msg.entityName }}</a><a href="#" ng-click="openCortexWidget({ type: alert.msg.contextType, id: alert.msg.contextID })">{{ alert.msg.context + alert.msg.contextName }}</a>
                 </td>
                 <td>
                     {{alert.time | date:'yyyy-MM-dd HH:mm:ss'}}
                 </td>
                 <td>
-                    {{alert.location}}
+                    <a href="#" ng-click="onAlertClick(alert)">{{alert.location}}</a>
                 </td>
             </tr>
         </table>
