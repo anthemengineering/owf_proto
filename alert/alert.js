@@ -10,14 +10,14 @@ angular.module('Alert').controller('AlertCtrl', function($scope, $timeout) {
     function getRandomArbitrary(min, max) {
       return Math.random() * (max - min) + min;
     }
-    truncateDecimals = function (number, digits) {
+    truncateDecimals = function(number, digits) {
         var multiplier = Math.pow(10, digits),
             adjustedNum = number * multiplier,
             truncatedNum = Math[adjustedNum < 0 ? 'ceil' : 'floor'](adjustedNum);
 
         return truncatedNum / multiplier;
     };
-    $scope.onTimeout = function(){
+    $scope.onTimeout = function() {
         lat = getRandomArbitrary(27, 50);
         lng = getRandomArbitrary(-127, -80);
         lat = truncateDecimals(lat, 4);
@@ -31,7 +31,7 @@ angular.module('Alert').controller('AlertCtrl', function($scope, $timeout) {
             newAlert.isOld = true;
         }, 500);
         mytimeout = $timeout($scope.onTimeout, 10000);
-    }
+    };
     var mytimeout = $timeout($scope.onTimeout, 1000);
     OWF.relayFile = '/owf/js/eventing/rpc_relay.uncompressed.html';
     $scope.onAlertClick = function(alert) {
@@ -39,5 +39,5 @@ angular.module('Alert').controller('AlertCtrl', function($scope, $timeout) {
             universalName: 'geo.anthemengineering.com'}, function() {
                 OWF.Eventing.publish('AlertClick', alert);
         });
-    }
+    };
 });
