@@ -1,57 +1,82 @@
 angular.module('Alert', []);
 angular.module('Alert').controller('AlertCtrl', function($scope, $timeout) {
     $scope.alerts = [];
-    $scope.alertMsgs = [{
-        title: 'Something went wrong',
-        verb: ' with ',
-        entityType: 'patient',
-        entityName: 'Rudy Alvarez',
-        entityID: 'd53733a0-25ea-4a21-b6c2-c5298eaaec5b',
-        context: ' related to ',
-        contextName: 'Motaba',
-        contextType: 'Virus',
-        contextID: 'Motaba'
-    }, {
-        title: 'Danger',
-        verb: ' with ',
-        entityType: 'expert',
-        entityName: 'Major Casey Schuler',
-        entityID: '009e8e7e-3345-4f7a-a4a3-e552237c12c2',
-        context: ' related to ',
-        contextName: 'Motaba',
-        contextType: 'Virus',
-        contextID: 'Motaba'
-    }, {
-        title: 'H1N1 Rumor',
-        verb: ' for ',
-        entityType: 'expert',
-        entityName: 'Colonel Sam Daniels',
-        entityID: 'fdce96e7-b5cf-4f9b-a87d-fac56d0d0742',
-        context: ' when he met ',
-        contextName: 'Robby',
-        contextType: 'expert',
-        contextID: 'a44980e9-615c-46c8-adef-2e7643c4b15f'
-    }, {
-        title: 'Anthrax Warning',
-        verb: ' between ',
-        entityType: 'patient',
-        entityName: 'Betsy the Monkey',
-        entityID: '81c23c6a-3201-467b-954c-95e836363091',
-        context: ' and ',
-        contextName: 'Jimbo',
-        contextType: 'patient',
-        contextID: '340e083a-5d01-435e-96ea-e8ce03220ed5'
-    }, {
-        title: 'Ebola outbreak',
-        verb: ' on ',
-        entityType: 'expert',
-        entityName: 'Major Salt',
-        entityID: '20c41041-e8a1-4d9b-8d19-f3fc947ffbe1',
-        context: ' treating ',
-        contextName: 'Alice',
-        contextType: 'patient',
-        contextID: 'afd7f848-0716-4e4a-9df7-1e84c7044710'
-    }];
+
+    $scope.alertMsgs = [
+        [
+            {
+                text:'Motaba',
+                entityType:'Virus',
+                entityID:'Motaba'
+            },
+            {
+                text:' outbreak in Cedar Creek, California reported by '
+            },{
+                text:'Major Salt.',
+                entityType:'expert',
+                entityID:'20c41041-e8a1-4d9b-8d19-f3fc947ffbe1'
+            }
+        ],
+        [
+            {
+                text: 'Rudy Alvarez',
+                entityType: 'patient',
+                entityID: 'd53733a0-25ea-4a21-b6c2-c5298eaaec5b'
+            },{
+                text: ' has gone code red with '
+            },{
+                text: 'Motaba.',
+                entityType: 'Virus',
+                entityID: 'Motaba'
+            }
+        ],[
+            {
+                text: 'New research by '
+            },{
+                text: 'Major Casey Schuler',
+                entityType: 'expert',
+                entityID: '009e8e7e-3345-4f7a-a4a3-e552237c12c2'
+            },{
+                text: ' has uncovered serious new information regarding ',
+            },{
+                text:'Motaba.',
+                entityType: 'Virus',
+                entityID: 'Motaba'
+            }
+        ],[
+            {
+                text:'New lead for patient zero: '
+            },{
+                text: 'Jimbo.',
+                entityType: 'expert',
+                entityID: '340e083a-5d01-435e-96ea-e8ce03220ed5'
+            },{
+                text:' Reported by '
+            },{
+                text: 'Colonel Sam Daniels.',
+                entityType: 'expert',
+                entityID: 'fdce96e7-b5cf-4f9b-a87d-fac56d0d0742'
+            }
+        ],[
+            {
+                text: 'Betsy',
+                entityType:'patient',
+                entityID: '81c23c6a-3201-467b-954c-95e836363091'
+            },{
+                text: ' may have communicated '
+            },{
+                text: 'Motaba',
+                entityType: 'Virus',
+                entityID:'Motaba'
+            },{
+                text: ' to ',
+            },{
+                text: 'Jimbo.',
+                entityType:'patient',
+                entityID:'340e083a-5d01-435e-96ea-e8ce03220ed5'
+            }
+        ]
+    ];
 
     function getRandomArbitrary(min, max) {
         return Math.random() * (max - min) + min;
@@ -65,12 +90,15 @@ angular.module('Alert').controller('AlertCtrl', function($scope, $timeout) {
         return truncatedNum / multiplier;
     };
 
+    var iter = 0;
+
     $scope.onTimeout = function() {
         lat = getRandomArbitrary(27, 50);
         lng = getRandomArbitrary(-127, -80);
         lat = truncateDecimals(lat, 4);
         lng = truncateDecimals(lng, 4);
-        message = $scope.alertMsgs[truncateDecimals(getRandomArbitrary(0, $scope.alertMsgs.length), 0)];
+        message = $scope.alertMsgs[iter];
+        iter ++;
         newAlert = {
             msg: message,
             time: Date.now(),
@@ -78,11 +106,13 @@ angular.module('Alert').controller('AlertCtrl', function($scope, $timeout) {
         };
         $scope.alerts.unshift(newAlert);
         $scope.alerts = $scope.alerts.slice(0, 10);
-        OWF.Eventing.publish('Alert', newAlert);
         $timeout(function() {
             newAlert.isOld = true;
         }, 500);
-        mytimeout = $timeout($scope.onTimeout, 10000);
+        if (iter < $scope.alertMsgs.length){
+            mytimeout = $timeout($scope.onTimeout, 5000);
+        }
+        OWF.Eventing.publish('Alert', newAlert);
     };
 
     var mytimeout = $timeout($scope.onTimeout, 1000);
