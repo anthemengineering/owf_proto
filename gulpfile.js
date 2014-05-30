@@ -14,7 +14,7 @@ gulp.task('allfiles', function () {
 });
 
 gulp.task('watch', function () {
-  gulp.watch(['**/*', '!node_modules/**'], ['allfiles']);
+  gulp.watch(['**/*', '!node_modules/**', '!**/*~'], ['allfiles']);
 });
 
 gulp.task('serve', ['connect', 'watch']);

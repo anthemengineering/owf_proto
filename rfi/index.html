@@ -1,13 +1,37 @@
 <!doctype html>
-<html ng-app>
+<html ng-app="RFI">
   <head>
     <script src="../angular.min.js"></script>
     <script src="../owf-widget.js"></script>
+    <script src="rfi.js"></script>
     <link href="../bootstrap.css" rel="stylesheet"></link>
+    <link href="rfi.css" rel="stylesheet"></link>
   </head>
-  <body class="container-fluid">
-    <div>
-        <h1>RFI</h1>
+  <body ng-controller="RFICtrl">
+    <div id="rfi-main" ng-cloak>
+        <table class="rfi-table table table-bordered">
+            <thead>
+                <tr>
+                    <th>RFI</th>
+                    <th>Agency</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tr class="rfi-row" ng-repeat="rfi in rfis">
+                <td>
+                    <a href="#" ng-click="onRFIClick(rfi)">{{rfi.rfiName}}</a>
+                </td>
+                <td>
+                    {{rfi.agency}}
+                </td>
+                <td>
+                    {{rfi.status}}
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="buttons">
+        <button class="btn btn-primary" id="new-rfi" ng-click="onRFIClick()">Create New RFI</button>
     </div>
   </body>
 </html>
