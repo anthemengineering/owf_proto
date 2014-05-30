@@ -17,7 +17,8 @@
                     <th>Status</th>
                 </tr>
             </thead>
-            <tr class="rfi-row" ng-repeat="rfi in rfis">
+            <tr class="rfi-noresponse" class="rfi-row" ng-repeat="rfi in rfis" ng-class="rfiClass(rfi)">
+
                 <td>
                     <a href="#" ng-click="onRFIClick(rfi)">{{rfi.rfiName}}</a>
                 </td>

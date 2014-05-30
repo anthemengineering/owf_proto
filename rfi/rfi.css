@@ -15,3 +15,14 @@
   padding:8px;
   background-color:#666;
 }
+.rfi-noresponse {
+    -webkit-transition: background-color 2s ease-in;
+    -moz-transition: background-color 2s ease-in;
+    transition: background-color 2s ease-in;
+    background-color: lightblue;
+}
+
+.rfi-response {
+    background-color: white;
+}
+

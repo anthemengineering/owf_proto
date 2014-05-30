@@ -1,6 +1,7 @@
 angular.module('RFI', []);
 angular.module('RFI').controller('RFICtrl', function($scope, $timeout) {
     OWF.relayFile = '/owf/js/eventing/rpc_relay.uncompressed.html';
+    $scope.responseReceivedString = 'Response Received';
 
     function getRandomArbitrary(min, max) {
       return Math.random() * (max - min) + min;
@@ -19,6 +20,12 @@ angular.module('RFI').controller('RFICtrl', function($scope, $timeout) {
     ];
 
     $scope.rfis = [];
+    $scope.rfiClass = function(rfi) {
+        if(rfi.status == $scope.responseReceivedString) {
+            return 'rfi-response';
+        }
+        return '';
+    };
     $scope.onRFIClick = function(rfi) {
         OWF.Launcher.launch({
             universalName: 'rfidetail.anthemengineering.com'
@@ -44,7 +51,7 @@ angular.module('RFI').controller('RFICtrl', function($scope, $timeout) {
         for( i = 0; i < $scope.rfis.length; i++ ) {
             var currRfi = $scope.rfis[i];
             if(currRfi.status === 'Awaiting Response') {
-                currRfi.status = 'Responded';
+                currRfi.status = $scope.responseReceivedString;
                 currRfi.response = $scope.possibleResponses[truncateDecimals(getRandomArbitrary(0, $scope.possibleResponses.length), 0)];
                 OWF.Eventing.publish('RFIUpdate', currRfi);
             }
