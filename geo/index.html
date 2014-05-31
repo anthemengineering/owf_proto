@@ -25,7 +25,14 @@
         }
         google.maps.event.addDomListener(window, 'load', initialize);
       function buildAlertMessage(alert) {
-          return alert.msg.title + alert.msg.verb + alert.msg.entityName + alert.msg.context + alert.msg.contextName;
+          // This broke once the structure of alert changed.
+          //return alert.msg.title + alert.msg.verb + alert.msg.entityName + alert.msg.context + alert.msg.contextName;
+
+          // Used this to debug. Prints the contents of alert to the map marker
+          //return JSON.stringify(alert, null, 4)
+
+          // Concatenates the alert texts based on the new structure of alert.
+          return alert.msg[0].text + alert.msg[1].text + alert.msg[2].text;
       }
       function alertReceiveInit() {
           OWF.Eventing.subscribe('Alert', this.alertReceive);
